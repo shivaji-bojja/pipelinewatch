@@ -1,0 +1,16 @@
+deal_id,deal_name,account,stage,amount_usd,days_since_last_activity,expected_close_date,stage_entered_date,stage_regressed,notes
+D001,Enterprise Support Renewal,Aurora Freight Co,Negotiation,185000,3,2026-07-15,2026-06-20,No,Active back-and-forth on contract terms
+D002,Fleet Analytics Platform,Meridian Logistics,Proposal,92000,21,2026-07-10,2026-06-05,No,No response since proposal sent
+D003,Regional Rollout Phase 2,Aurora Freight Co,Negotiation,240000,18,2026-06-30,2026-06-01,Yes,Moved back from Negotiation to Proposal once already
+D004,Data Integration Pilot,Northbridge Retail,Discovery,45000,5,2026-08-01,2026-06-25,No,New opportunity, healthy engagement
+D005,API Gateway Upgrade,Solace Manufacturing,Negotiation,310000,30,2026-07-05,2026-05-28,No,Champion went quiet after budget approval request
+D006,Vendor Consolidation Deal,Northbridge Retail,Proposal,78000,2,2026-07-20,2026-06-28,No,Weekly syncs ongoing
+D007,Predictive Maintenance Suite,Solace Manufacturing,Closed Won,150000,1,2026-06-15,2026-05-01,No,Signed last week
+D008,Customer Portal Revamp,Cedarline Insurance,Negotiation,120000,25,2026-06-28,2026-06-02,Yes,Legal review stalled, stage bounced back once
+D009,Warehouse IoT Sensors,Meridian Logistics,Discovery,60000,10,2026-08-15,2026-06-20,No,Early stage, one intro call held
+D010,Compliance Reporting Tool,Cedarline Insurance,Proposal,55000,14,2026-07-12,2026-06-10,No,Awaiting procurement sign-off
+D011,Freight Pricing Optimizer,Aurora Freight Co,Discovery,98000,4,2026-08-20,2026-06-27,No,Strong initial interest from VP Ops
+D012,Legacy System Migration,Solace Manufacturing,Proposal,275000,28,2026-07-08,2026-05-30,No,No activity since proposal, deal has gone dark
+D013,Self-Service Analytics Add-on,Northbridge Retail,Negotiation,40000,7,2026-07-18,2026-06-22,No,Pricing discussion in progress
+D014,Regional Expansion Deal,Meridian Logistics,Negotiation,210000,15,2026-06-25,2026-05-25,Yes,Second bounce from Negotiation, stalled twice
+D015,Onboarding Automation,Cedarline Insurance,Closed Lost,35000,45,2026-06-01,2026-04-15,No,Lost to competitor, closed out

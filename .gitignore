@@ -1,0 +1,28 @@
+# Environment / secrets
+.env
+*.env
+.venv/
+venv/
+
+# Never commit API keys
+*api_key*
+*.key
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+
+# OS/editor cruft
+.DS_Store
+.idea/
+.vscode/
+
+# Local ADK / session artifacts, if any get created at runtime
+*.db
+*.sqlite3
