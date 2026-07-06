@@ -152,3 +152,27 @@ def score_all_deals(valid_deals: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
     scored.sort(key=lambda d: d["amount_usd"], reverse=True)
     return scored
+
+
+def total_at_risk(scored_deals: list[dict[str, Any]]) -> dict[str, Any]:
+    """Compute the exact total dollars at risk from scored deals.
+
+    Deliberately a plain Python sum, not left to the LLM to add up in
+    free text -- LLMs are unreliable at exact arithmetic over multiple
+    numbers, and a wrong total in the executive summary would undermine
+    the whole point of an evaluable, trustworthy pipeline. The
+    Insights Agent should call this tool and quote its result directly
+    rather than computing the total itself.
+
+    Args:
+        scored_deals: the output of score_all_deals.
+
+    Returns:
+        A dict with 'total_usd' (float) and 'flagged_count' (int),
+        counting only Medium/High risk deals.
+    """
+    at_risk = [d for d in scored_deals if d["risk_level"] in ("Medium", "High")]
+    return {
+        "total_usd": sum(d["amount_usd"] for d in at_risk),
+        "flagged_count": len(at_risk),
+    }

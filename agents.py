@@ -18,7 +18,7 @@ import os
 
 from google.adk.agents import Agent, SequentialAgent
 
-from tools import load_and_validate_deals, load_skill, score_all_deals
+from tools import load_and_validate_deals, load_skill, score_all_deals, total_at_risk
 
 MODEL = "gemini-2.5-flash"
 
@@ -65,21 +65,28 @@ insights_agent = Agent(
     name="insights_agent",
     model=MODEL,
     description="Writes a plain-English executive summary of at-risk deals.",
-    # No tools here by design: this agent's job is purely narrative --
-    # turning already-scored, already-validated data into prose a
-    # manager can read in under a minute. Giving it tools would risk
-    # letting the LLM "helpfully" recompute risk scores itself instead
-    # of trusting the deterministic values it was handed.
+    # This agent gets exactly one tool -- total_at_risk -- and no others.
+    # Everything else (risk levels, ranking) was already computed
+    # deterministically upstream; the one number this agent would
+    # otherwise have to compute itself in free text is the sum of
+    # flagged deal amounts, and LLMs are unreliable at exact arithmetic
+    # over several numbers. Giving it a tool for that one calculation
+    # removes the only place a wrong number could sneak into the output.
     instruction=(
         "Using the scored deals in state as risk_scoring_output, write a "
         "short executive summary for a sales manager. Include only "
         "Medium and High risk deals, ordered by dollar amount descending. "
         "For each, state the deal name, account, amount, risk level, and "
-        "the reason(s) it was flagged, in one sentence. Close with a "
-        "one-line total of dollars at risk. Do not include any customer "
-        "contact names or emails even if present in the data -- account "
-        "and deal names only. Keep the whole summary under 200 words."
+        "the reason(s) it was flagged, in one sentence. "
+        "Call the total_at_risk tool with the full list of scored deals "
+        "to get the exact total -- do not add the amounts up yourself. "
+        "Quote the tool's total_usd value exactly as your closing line: "
+        "'Total dollars at risk: $X.' "
+        "Do not include any customer contact names or emails even if "
+        "present in the data -- account and deal names only. Keep the "
+        "whole summary under 200 words."
     ),
+    tools=[total_at_risk],
     output_key="executive_summary",
 )
 
