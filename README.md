@@ -79,6 +79,16 @@ python main.py
 
 Runs all three agents end-to-end and prints the final executive summary.
 
+## Screenshots
+
+**Live agent run — real executive summary output:**
+
+![Executive summary output](screenshots/executive_summary.png)
+
+**Evaluation script — deterministic scoring checked against labeled results:**
+
+![Eval accuracy](screenshots/eval_accuracy.png)
+
 ## Files
 
 | File | Purpose |
@@ -89,6 +99,7 @@ Runs all three agents end-to-end and prints the final executive summary.
 | `pipeline_deals.csv` | Sample synthetic CRM data (15 deals, 4 accounts) |
 | `main.py` | Entry point to run the full agent pipeline |
 | `eval.py` | Standalone accuracy check against labeled expected results |
+| `screenshots/` | Real run output and eval results, referenced above |
 
 ## Security notes
 
